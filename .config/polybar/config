@@ -1,0 +1,184 @@
+[color]
+background-bottom = #A0000000
+background-top = #0A000000
+
+[bar/eDP1-top]
+monitor = eDP1
+modules-left = ewmh 
+modules-right = wlan alsa date battery
+module-margin-left = 3 
+
+font-0 = "Iosevka:pixelsize=12;3"
+background = ${color.background-top}
+
+[bar/eDP1-bottom]
+monitor = eDP1
+modules-right = memory cpu
+module-margin-left = 3 
+bottom = true
+
+font-0 = "Iosevka:pixelsize=12;3"
+background = ${color.background-bottom}
+
+[bar/HDMI-top]
+monitor = HDMI-1-0
+modules-left = ewmh 
+modules-right = alsa date battery
+module-margin-left = 3 
+
+font-0 = "Iosevka:pixelsize=12;3"
+background = ${color.background-top}
+
+[module/date]
+type = internal/date
+date = %Y-%m-%d
+time = %H:%M
+
+label = %date% | %time%
+
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = BAT0
+adapter = AC
+
+format-charging = <animation-charging> <label-charging>
+format-discharging = <ramp-capacity> <label-discharging>
+label-full = %percentage%
+
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = #1167b1
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = #1167b1
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = #1167b1
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = #1167b1
+animation-charging-framerate = 750
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format = <label> <bar-load>
+label = CPU %percentage%%
+
+bar-load-width = 5
+bar-load-foreground-0 = #c1cb7f
+bar-load-foreground-1 = #d9c37f
+bar-load-foreground-2 = #e4a48a
+bar-load-foreground-3 = #ed9896
+bar-load-indicator = ■
+bar-load-indicator-font = 0
+bar-load-indicator-foreground = #55fdf6e3
+bar-load-fill = ■
+bar-load-fill-font = 0
+bar-load-empty = □
+bar-load-empty-font = 0
+bar-load-empty-foreground = #99586e75
+
+[module/memory]
+type = internal/memory
+format = <label> <ramp-used>
+; Seconds to sleep between updates
+; Default: 1
+interval = 3
+label = RAM %percentage_used%% 
+
+bar-used-indicator =
+bar-used-width = 50
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
+
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+
+[module/ewmh]
+type = internal/xworkspaces
+
+; Only show workspaces defined on the same output as the bar
+;
+; Useful if you want to show monitor specific workspaces
+; on different bars
+;
+; Default: false
+pin-workspaces = true
+
+; Create click handler used to focus desktop
+; Default: true
+enable-click = false
+
+; Create scroll handlers used to cycle desktops
+; Default: true
+enable-scroll = false
+
+label-active = %icon% %name%
+label-active-foreground = #ffffff
+label-active-background = #1167b1
+label-active-padding-right = 2
+label-active-padding-left = 1
+
+label-occupied-padding-left = 1
+label-occupied-padding-right = 2
+
+[module/alsa]
+type = internal/alsa
+ 
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = #FFFFFF
+ 
+format-muted-prefix = " "
+format-muted-foreground = #FFFFFF
+label-muted = muted
+ 
+bar-volume-width = 5
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = |
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = #FFFFFF
+
+[module/wlan]
+
+type = internal/network
+interface = wlan0
+interval = 3.0
+
+format-connected =  <label-connected>
+;format-connected-underline = ${colors.primary}
+label-connected = %essid%
+
+format-disconnected =
+;format-disconnected = <label-disconnected>
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = #000000
+
+ramp-signal-foreground = #000000

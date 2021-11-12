@@ -15,3 +15,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 alias config='/usr/bin/git --git-dir=$HOME/linux-config --work-tree=$HOME'
 
+FIRMLET_DB_PORT=3308

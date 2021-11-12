@@ -182,3 +182,4 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id exec ~/.config/polybar/launch.sh
 exec_always --no-startup-id nitrogen --restore &
 exec_always --no-startup-id picom
+bindsym Print exec flameshot gui
